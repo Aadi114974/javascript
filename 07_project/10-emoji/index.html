@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Emojis</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #emoji {
+      font-size: 80px;
+      cursor: pointer;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+    #emoji:hover {
+      filter: grayscale(0%);
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <h4>
+    Hover over the emoji to get a new one. Move the mouse away to turn it into gray-scale.
+  </h4>
+  
+  <div id="emoji">🤣</div>
+
+  <script>
+    const emojiList = ["🤣", "😊", "😎", "😍", "🥳", "🤯", "😴", "🤩", "😭", "😡"];
+    const emojiDiv = document.getElementById("emoji");
+
+    emojiDiv.addEventListener("mouseenter", () => {
+      const randomEmoji = emojiList[Math.floor(Math.random() * emojiList.length)];
+      emojiDiv.textContent = randomEmoji;
+    });
+
+    // Optional: Change back to gray on mouse leave
+    emojiDiv.addEventListener("mouseleave", () => {
+      emojiDiv.style.filter = "grayscale(100%)";
+    });
+
+    emojiDiv.addEventListener("mouseenter", () => {
+      emojiDiv.style.filter = "grayscale(0%)";
+    });
+  </script>
+</body>
+</html>
